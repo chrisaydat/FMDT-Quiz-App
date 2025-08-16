@@ -48,7 +48,10 @@ class OnboardingScreen extends StatelessWidget {
                             ),
                           ),
                           onPressed: () {
-                            Navigator.pushReplacementNamed(context, "");
+                            Navigator.pushReplacementNamed(
+                              context,
+                              "/about-me",
+                            );
                           },
                           child: Text(
                             "Get Started",

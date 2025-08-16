@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fmdt_quiz_app/screens/about_me.dart';
 import 'package:fmdt_quiz_app/screens/onboarding_screen.dart';
 import 'package:fmdt_quiz_app/splash_screen.dart';
 
@@ -13,12 +14,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(),
+      // title: 'Flutter Demo',
+      // theme: ThemeData(),
       initialRoute: "/",
       routes: {
         "/": (context) => const SplashScreen(),
         "/onboarding": (context) => const OnboardingScreen(),
+        "/about-me": (context) => const AboutMe(),
       },
     );
   }
