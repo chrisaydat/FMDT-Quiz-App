@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fmdt_quiz_app/screens/onboarding_screen.dart';
 import 'package:fmdt_quiz_app/splash_screen.dart';
 
 void main() {
@@ -14,7 +15,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(),
-      home: const SplashScreen(),
+      initialRoute: "/",
+      routes: {
+        "/": (context) => const SplashScreen(),
+        "/onboarding": (context) => const OnboardingScreen(),
+      },
     );
   }
 }
