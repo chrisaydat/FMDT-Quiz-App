@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class _CategoryCard extends StatelessWidget {
+class CategoryCard extends StatelessWidget {
   final IconData icon;
   final String label;
-  const _CategoryCard({required this.icon, required this.label});
+  const CategoryCard({required this.icon, required this.label});
 
   @override
   Widget build(BuildContext context) {
