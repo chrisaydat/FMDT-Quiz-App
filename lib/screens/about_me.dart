@@ -61,7 +61,7 @@ class AboutMe extends StatelessWidget {
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.pushReplacementNamed(context, "/");
+                      Navigator.pushReplacementNamed(context, "/home");
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.grey.shade400,

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fmdt_quiz_app/screens/about_me.dart';
+import 'package:fmdt_quiz_app/screens/home_screen.dart';
 import 'package:fmdt_quiz_app/screens/onboarding_screen.dart';
+import 'package:fmdt_quiz_app/screens/quiz_categories.dart';
 import 'package:fmdt_quiz_app/splash_screen.dart';
 
 void main() {
@@ -21,8 +23,9 @@ class MyApp extends StatelessWidget {
         "/": (context) => const SplashScreen(),
         "/onboarding": (context) => const OnboardingScreen(),
         "/about-me": (context) => const AboutMe(),
+        "/home": (context) => HomeScreen(),
+        "/quiz-categories": (context) => QuizCategoriesScreen(),
       },
     );
   }
 }
-

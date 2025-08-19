@@ -7,7 +7,7 @@ class OnboardingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: const Color(0xFFFFFFFFF),
+        backgroundColor: const Color(0xFFFFFFFF),
         body: SafeArea(
           child: Column(
             children: [
