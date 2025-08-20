@@ -146,21 +146,112 @@ class _CategoryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.orange.shade50,
-        borderRadius: BorderRadius.circular(12),
+    return GestureDetector(
+      onTap: () => showDialog(
+        context: context,
+        builder: (context) => QuizSettingsDialog(category: label),
       ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(icon, size: 40, color: Colors.orange),
-          const SizedBox(height: 8),
-          Text(
-            label,
-            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.orange.shade50,
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(icon, size: 40, color: Colors.orange),
+            const SizedBox(height: 8),
+            Text(
+              label,
+              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class QuizSettingsDialog extends StatelessWidget {
+  final String category;
+  const QuizSettingsDialog({required this.category, super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      backgroundColor: Colors.white,
+      content: SizedBox(
+        height: 300,
+        width: double.infinity,
+        child: Padding(
+          padding: EdgeInsets.all(8),
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text("Quiz Settings"),
+                  ElevatedButton.icon(
+                    onPressed: null,
+                    label: Icon(Icons.close),
+                  ),
+                ],
+              ),
+              SizedBox(height: 8),
+              Text("How many questions would you like?"),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ElevatedButton(onPressed: null, child: Icon(Icons.remove)),
+                  SizedBox(
+                    width: 60,
+                    child: TextField(
+                      controller: TextEditingController(text: "5"),
+                      textAlign: TextAlign.center,
+                      keyboardType: TextInputType.number,
+                      decoration: InputDecoration(
+                        isDense: true,
+                        contentPadding: const EdgeInsets.symmetric(
+                          vertical: 10,
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                    ),
+                  ),
+                  ElevatedButton(onPressed: null, child: Icon(Icons.add)),
+                ],
+              ),
+              Text("Select Difficulty"),
+              SizedBox(height: 8),
+              DropdownButton<String>(
+                items: const [
+                  DropdownMenuItem(value: "Easy", child: Text("Easy")),
+                  DropdownMenuItem(value: "Hard", child: Text("Hard")),
+                  DropdownMenuItem(
+                    value: "Difficult",
+                    child: Text("Difficult"),
+                  ),
+                ],
+                onChanged: null,
+              ),
+              SizedBox(height: 8),
+              ElevatedButton(
+                onPressed: null,
+                child: Text("Start Quiz"),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.orangeAccent,
+                  foregroundColor: Colors.white,
+                  padding: EdgeInsets.symmetric(horizontal: 80, vertical: 16),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
