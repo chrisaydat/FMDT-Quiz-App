@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:fmdt_quiz_app/models/quiz_settings_model.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
@@ -271,20 +273,26 @@ class _QuizSettingsDialogState extends State<QuizSettingsDialog> {
               ),
               Text("Select Difficulty"),
               SizedBox(height: 8),
-              DropdownButton<String>(
+              DropdownButton<Difficulty>(
+                value: context.watch<QuizSettingsModel>().difficulty,
                 items: const [
-                  DropdownMenuItem(value: "Easy", child: Text("Easy")),
-                  DropdownMenuItem(value: "Hard", child: Text("Hard")),
+                  DropdownMenuItem(value: Difficulty.Easy, child: Text("Easy")),
+                  DropdownMenuItem(value: Difficulty.Hard, child: Text("Hard")),
                   DropdownMenuItem(
-                    value: "Difficult",
+                    value: Difficulty.Difficult,
                     child: Text("Difficult"),
                   ),
                 ],
-                onChanged: null,
+                onChanged: (value) {
+                  if (value == null) return;
+                  context.read<QuizSettingsModel>().setDifficulty(value);
+                },
               ),
               SizedBox(height: 8),
               ElevatedButton(
-                onPressed: null,
+                onPressed: () {
+                  print('this button has been pressed');
+                },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.orangeAccent,
                   foregroundColor: Colors.white,
