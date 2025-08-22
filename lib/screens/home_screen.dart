@@ -7,132 +7,134 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFFFFFFF),
-      body: SafeArea(
-        child: Column(
-          children: [
-            Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: CircleAvatar(
-                    backgroundColor: Colors.white,
-                    foregroundImage: AssetImage("assets/images/pp.png"),
-                    radius: 30,
-                  ),
-                ),
-                Text(
-                  "Hi, Emmanuel",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                Expanded(
-                  child: Padding(
+      body: SingleChildScrollView(
+        child: SafeArea(
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  Padding(
                     padding: const EdgeInsets.all(16.0),
-                    child: TextField(
-                      decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.search),
-                        filled: true,
-                        fillColor: Colors.white,
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(25.0),
-                          // borderSide: BorderSide.none
-                        ),
-                        hintText: "Search",
-                      ),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: ElevatedButton.icon(
-                    onPressed: () {
-                      print("This button has been pressed");
-                    },
-                    label: Text(
-                      "Filter",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    icon: Icon(Icons.filter_list, color: Colors.black),
-                    style: ElevatedButton.styleFrom(
+                    child: CircleAvatar(
                       backgroundColor: Colors.white,
+                      foregroundImage: AssetImage("assets/images/pp.png"),
+                      radius: 30,
                     ),
                   ),
-                ),
-              ],
-            ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text("Categories"),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.pushNamed(context, "/quiz-categories");
-                    },
-                    child: Text(
-                      "See more",
-                      style: TextStyle(color: Colors.orange),
-                    ),
+                  Text(
+                    "Hi, Emmanuel",
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                 ],
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.all(16.0),
-              child: GridView.count(
-                crossAxisCount: 2,
-                crossAxisSpacing: 2,
-                mainAxisSpacing: 2,
-                shrinkWrap: true,
+              Row(
                 children: [
-                  _CategoryCard(icon: Icons.school, label: "Mathematics"),
-                  _CategoryCard(icon: Icons.sports_football, label: "Sports"),
-                  _CategoryCard(icon: Icons.menu_book, label: "History"),
-                  _CategoryCard(icon: Icons.pets, label: "Pets"),
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          prefixIcon: Icon(Icons.search),
+                          filled: true,
+                          fillColor: Colors.white,
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(25.0),
+                            // borderSide: BorderSide.none
+                          ),
+                          hintText: "Search",
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ElevatedButton.icon(
+                      onPressed: () {
+                        print("This button has been pressed");
+                      },
+                      label: Text(
+                        "Filter",
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      icon: Icon(Icons.filter_list, color: Colors.black),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.white,
+                      ),
+                    ),
+                  ),
                 ],
               ),
-            ),
-            SizedBox(height: 8),
-            Padding(
-              padding: EdgeInsets.all(16.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text("Score History"),
-                  Text("View All", style: TextStyle(color: Colors.orange)),
-                ],
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.all(16.0),
-              child: Container(
-                width: double.infinity,
-                color: Colors.white,
-                padding: EdgeInsets.symmetric(vertical: 36, horizontal: 24),
-                child: Column(
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Icon(
-                      Icons.assignment,
-                      size: 48,
-                      color: Colors.grey.shade400,
-                    ),
-                    Text(
-                      "You have no scores recorded yet.\n"
-                      "Select a Category and challenge yourself",
-                      textAlign: TextAlign.center,
+                    Text("Categories"),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context, "/quiz-categories");
+                      },
+                      child: Text(
+                        "See more",
+                        style: TextStyle(color: Colors.orange),
+                      ),
                     ),
                   ],
                 ),
               ),
-            ),
-          ],
+              Padding(
+                padding: EdgeInsets.all(16.0),
+                child: GridView.count(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 2,
+                  mainAxisSpacing: 2,
+                  shrinkWrap: true,
+                  children: [
+                    _CategoryCard(icon: Icons.school, label: "Mathematics"),
+                    _CategoryCard(icon: Icons.sports_football, label: "Sports"),
+                    _CategoryCard(icon: Icons.menu_book, label: "History"),
+                    _CategoryCard(icon: Icons.pets, label: "Pets"),
+                  ],
+                ),
+              ),
+              SizedBox(height: 8),
+              Padding(
+                padding: EdgeInsets.all(16.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Score History"),
+                    Text("View All", style: TextStyle(color: Colors.orange)),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(16.0),
+                child: Container(
+                  width: double.infinity,
+                  color: Colors.white,
+                  padding: EdgeInsets.symmetric(vertical: 36, horizontal: 24),
+                  child: Column(
+                    children: [
+                      Icon(
+                        Icons.assignment,
+                        size: 48,
+                        color: Colors.grey.shade400,
+                      ),
+                      Text(
+                        "You have no scores recorded yet.\n"
+                        "Select a Category and challenge yourself",
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -172,9 +174,50 @@ class _CategoryCard extends StatelessWidget {
   }
 }
 
-class QuizSettingsDialog extends StatelessWidget {
+class QuizSettingsDialog extends StatefulWidget {
   final String category;
   const QuizSettingsDialog({required this.category, super.key});
+
+  @override
+  State<QuizSettingsDialog> createState() => _QuizSettingsDialogState();
+}
+
+class _QuizSettingsDialogState extends State<QuizSettingsDialog> {
+  int _count = 5;
+  late final TextEditingController _countControl;
+
+  @override
+  void initState() {
+    super.initState();
+    _countControl = TextEditingController(text: '$_count');
+  }
+
+  @override
+  void dispose() {
+    _countControl.dispose();
+    super.dispose();
+  }
+
+  void _setCount(int value) {
+    final clamped = value.clamp(1, 99);
+    setState(() {
+      _count = clamped;
+      _countControl.text = '$_count';
+      _countControl.selection = TextSelection.fromPosition(
+        TextPosition(offset: _countControl.text.length),
+      );
+    });
+  }
+
+  void _increment() => _setCount(_count + 1);
+  void _decrement() => _setCount(_count - 1);
+
+  void _syncFromText(String value) {
+    if (value.isEmpty) return;
+    final n = int.tryParse(value);
+    if (n == null) return;
+    _setCount(n);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -192,7 +235,7 @@ class QuizSettingsDialog extends StatelessWidget {
                 children: [
                   Text("Quiz Settings"),
                   ElevatedButton.icon(
-                    onPressed: null,
+                    onPressed: () => Navigator.pop(context),
                     label: Icon(Icons.close),
                   ),
                 ],
@@ -202,11 +245,14 @@ class QuizSettingsDialog extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  ElevatedButton(onPressed: null, child: Icon(Icons.remove)),
+                  ElevatedButton(
+                    onPressed: _decrement,
+                    child: Icon(Icons.remove),
+                  ),
                   SizedBox(
                     width: 60,
                     child: TextField(
-                      controller: TextEditingController(text: "5"),
+                      controller: _countControl,
                       textAlign: TextAlign.center,
                       keyboardType: TextInputType.number,
                       decoration: InputDecoration(
@@ -220,7 +266,7 @@ class QuizSettingsDialog extends StatelessWidget {
                       ),
                     ),
                   ),
-                  ElevatedButton(onPressed: null, child: Icon(Icons.add)),
+                  ElevatedButton(onPressed: _increment, child: Icon(Icons.add)),
                 ],
               ),
               Text("Select Difficulty"),
@@ -239,7 +285,6 @@ class QuizSettingsDialog extends StatelessWidget {
               SizedBox(height: 8),
               ElevatedButton(
                 onPressed: null,
-                child: Text("Start Quiz"),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.orangeAccent,
                   foregroundColor: Colors.white,
@@ -248,6 +293,7 @@ class QuizSettingsDialog extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12),
                   ),
                 ),
+                child: Text("Start Quiz"),
               ),
             ],
           ),
